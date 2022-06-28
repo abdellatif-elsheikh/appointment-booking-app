@@ -1,0 +1,10 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE TABLE bookings(
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  price NUMERIC(8,2) NOT NULL,
+  date DATE NOT NULL,
+  description TEXT NOT NULL,
+  user_id uuid NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
